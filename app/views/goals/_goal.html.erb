@@ -1,4 +1,9 @@
 <div id="<%= dom_id goal %>">
+
+  <h3>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-danger" %>
+  </h3>
+
   <h2>
     <%= goal.name %>
   </h2>
