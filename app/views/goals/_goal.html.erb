@@ -1,3 +1,6 @@
+<% number_of_tasks = goal.tasks.count.to_f %>
+<% progress_percent = number_of_tasks == 0 ? 100 : (goal.tasks.where(completed: true).count / number_of_tasks) * 100 %>
+
 <div id="<%= dom_id goal %>">
 
   <h3>
@@ -9,8 +12,9 @@
   </h2>
 
   <div class="progress">
-    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= progress_percent %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
+  <%= progress_percent %>
 
   <div>
     <%= goal.description %>
